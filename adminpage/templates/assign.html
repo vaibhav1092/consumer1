@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Movie-Actor Assignment Page</title>
+</head>
+<body>
+
+    <form action="http://localhost:8001/consumer/assign" method="post">
+        {% csrf_token %}
+        Movies List :
+        <select name="movie">
+            {% for mv in movies %}
+                <option value="{{mv.id}}">{{mv.mvname}}</option>
+                {% endfor %}
+        </select>
+        <br><br>
+
+        Actor List :
+        <select name="actors" multiple>
+                {% for act in actors %}
+                <option value="{{act.id}}">{{act.aname}}</option>
+                {% endfor %}
+        </select><br><br>
+
+        <input type="submit">
+    </form>
+
+</body>
+</html>
